@@ -1,11 +1,11 @@
 // Командный проект. Лабораторная работа, часть 2.
 // Техлид: Пичугин Д. И., группа ПИ-53, вариант 86
-// Участник: Пушенко Богдан
+// Участник: Пушенко Богдан, группа ПИ-53, вариант 1
 
 #include <iostream>
+#include "pichugin.h"
 using namespace std;
 
-// #include "pichugin.h"
 // #include "pushenko.h"
 
 int main() {
@@ -29,13 +29,39 @@ int main() {
         }
 
         switch (choice) {
-            case 1:
-                cout << "Пункт 1 пока не подключён. Дождитесь pichugin.cpp\n";
+            case 1: {
+                double rub, rate;
+                cout << "Введите сумму в рублях и курс (через пробел): ";
+                if (!(cin >> rub >> rate)) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cout << "Ошибка ввода: нужны два числа, дробная часть через точку.\n";
+                    break;
+                }
+                if (rate <= 0) {
+                    cout << "Ошибка: курс должен быть больше 0.\n";
+                } else {
+                    cout << "Сумма в валюте = " << toForeign(rub, rate) << " ед. валюты\n";
+                }
                 break;
+            }
 
-            case 2:
-                cout << "Пункт 2 пока не подключён. Дождитесь pichugin.cpp\n";
+            case 2: {
+                double amount, rate;
+                cout << "Введите сумму в валюте и курс (через пробел): ";
+                if (!(cin >> amount >> rate)) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cout << "Ошибка ввода: нужны два числа, дробная часть через точку.\n";
+                    break;
+                }
+                if (rate <= 0) {
+                    cout << "Ошибка: курс должен быть больше 0.\n";
+                } else {
+                    cout << "Сумма в рублях = " << toRub(amount, rate) << " руб.\n";
+                }
                 break;
+            }
 
             case 3:
                 cout << "Пункт 3 пока не подключён. Дождитесь pushenko.cpp\n";
